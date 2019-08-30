@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * @param {number} n
+     * @return {number}
+     */
+    var numSquares = function(n) {
+        var que=[]
+        var count_arr=[]
+        var i=0
+
+        while (i*i<=n){
+            i++
+            que.push(i*i)
+        }
+        que.pop()
+        console.log(que)
+        while (que.length!=0){
+            var sum=n
+            var count=0
+
+            for(let i=que.length-1;i>=0;i--){
+                var num=que[i]
+                while (sum>=num) {
+                    sum-=num
+                    count++
+                }
+                if(sum==0){
+                    count_arr.push(count)
+                    break
+                }
+            }
+            que.pop()
+        }
+        console.log(count_arr)
+        return Math.min.apply(null,count_arr)
+
+    };
+    console.log(numSquares(43))
+
+</script>
+</html>
